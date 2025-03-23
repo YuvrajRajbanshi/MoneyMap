@@ -9,6 +9,10 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
 // MongoDB Connection
 const mongoURI = process.env.MONGODB_URI;
 console.log(process.env.MONGODB_URI);
@@ -30,9 +34,6 @@ mongoose
 // app.use(cors(corsOptions));
 // //!Middlewares
 // app.use(express.json()); //?Pass incoming json data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
 //!Routes
 app.use("/", userRouter);
