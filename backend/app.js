@@ -24,12 +24,16 @@ mongoose
     console.error("Error in MongoDB Connection", err);
   });
 //! Cors config
-const corsOptions = {
-  origin: ["http://localhost:5173"],
-};
-app.use(cors(corsOptions));
-//!Middlewares
-app.use(express.json()); //?Pass incoming json data
+// const corsOptions = {
+//   origin: ["http://localhost:5173"],
+// };
+// app.use(cors(corsOptions));
+// //!Middlewares
+// app.use(express.json()); //?Pass incoming json data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
 //!Routes
 app.use("/", userRouter);
 app.use("/", categoryRouter);
