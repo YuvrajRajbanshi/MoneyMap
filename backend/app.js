@@ -11,8 +11,14 @@ dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-
+// app.use(cors());
+app.use(
+  cors({
+    origin: "https://money-map-seven.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // If you need to allow cookies or authentication headers
+  })
+);
 // MongoDB Connection
 const mongoURI = process.env.MONGODB_URI;
 console.log(process.env.MONGODB_URI);
